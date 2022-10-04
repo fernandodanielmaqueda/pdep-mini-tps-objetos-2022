@@ -1,4 +1,4 @@
-# Mini TPs - Paradigma Orientado a Objetos 2021
+# Mini TPs - Paradigma Orientado a Objetos 2022
 
 Nombre y Apellido: Fernando Daniel Maqueda
 

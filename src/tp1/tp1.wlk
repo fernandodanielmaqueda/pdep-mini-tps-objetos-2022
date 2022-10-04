@@ -6,18 +6,26 @@ object jardin {
 	    else "arbusto-desprolijo.png"
 	
 	method crecerMalezas() {
-		// TODO: Completar 
+		malezas += 5
+	}
+
+	method desprolijo() {
+		return malezas > 20
 	}
 	
-	// TODO: Completar 
-	method desprolijo() = false
+	method emprolijar(nivelDeProlijidad) {
+		if(nivelDeProlijidad >= 10) malezas = 0
+		if((nivelDeProlijidad >= 3) && (nivelDeProlijidad <= 9)) malezas /= 2
+	}
 }
 
 object spa {
 	method image() = "spa.png"
 	
 	method atender(persona) {
-		//TODO: Completar 
+		persona.darseUnBanioDeVaporDurante(5)
+		persona.recibirMasajes()
+		persona.darseUnBanioDeVaporDurante(15)
 	}
 }
 
@@ -27,7 +35,21 @@ object olivia {
 	method image() = "jardinera.png"
 	
 	method trabajarEnJardin(unJardin){
-		// TODO: Completar 
+		if(unJardin.desprolijo()) self.estresarse(2)
+		unJardin.emprolijar(2 * relax)
+		self.estresarse(1)
+	}
+	
+	method estresarse(estres){
+		relax = (relax - estres).max(1)
+	}
+	
+	method darseUnBanioDeVaporDurante(minutos) {
+		relax += minutos / 5
+	}
+	
+	method recibirMasajes() {
+		relax += 3
 	}
 }
 
@@ -37,6 +59,25 @@ object adriano {
 	method image() = "jardinero.png"
 	
 	method trabajarEnJardin(unJardin){
-		//TODO: Completar 
+		const malezasIniciales = unJardin.malezas()
+		if(self.estaLastimado()) unJardin.emprolijar(1)
+		else unJardin.emprolijar(5)
+		contracturas += 7.min(malezasIniciales)
+	}
+	
+	method estaLastimado() {
+		return contracturas > 10
+	}
+	
+	method darseUnBanioDeVaporDurante(minutos) {
+		if(self.estaLastimado()) self.disminuirContracturas(2)
+	}
+	
+	method recibirMasajes() {
+		self.disminuirContracturas(5)
+	}
+	
+	method disminuirContracturas(disminucion) {
+		contracturas = (contracturas - disminucion).max(0)
 	}
 }
