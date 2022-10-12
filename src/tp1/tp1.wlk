@@ -15,7 +15,7 @@ object jardin {
 	
 	method emprolijar(nivelDeProlijidad) {
 		if(nivelDeProlijidad >= 10) malezas = 0
-		if((nivelDeProlijidad.between(3, 9)) malezas /= 2
+		if(nivelDeProlijidad.between(3, 9)) malezas /= 2
 	}
 }
 
