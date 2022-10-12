@@ -2,12 +2,10 @@ import tp2.*
 
 describe "Supermercado" {
 	method crearProductoDeVentaUnitaria(nombre, precioUnitario){
-		// TODO crear y retornar el producto correspondiente
-		return "CAMBIA ESTE STRING POR EL PRODUCTO REQUERIDO"
+		return new ProductoDeVentaUnitaria(nombreDelProducto = nombre, precioUnitario = precioUnitario)
 	}
 	method crearProductoDeVentaPorPeso(nombre, precioPorKilo, peso){
-		// TODO crear y retornar el producto correspondiente
-		return "CAMBIA ESTE STRING POR EL PRODUCTO REQUERIDO"
+		return new ProductoDeVentaPorPeso(nombreDelProducto = nombre, precioPorKilo = precioPorKilo, pesoEnKg = peso)
 	}
 	
 	test "El carrito está vacío cuando no se le agregaron productos"{

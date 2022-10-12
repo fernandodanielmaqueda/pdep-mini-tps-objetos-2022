@@ -1,31 +1,37 @@
-// TODO agregar todo lo necesario para completar la implementación del carrito
 object carrito {
+	const carrito = []
 
 	method agregar(producto) {
-		self.error("Falta implementar")
+		carrito.add(producto)
 	}
 
-	method estaVacio() {
-		self.error("Falta implementar")
-	}
+	method estaVacio() = carrito.isEmpty()
 	
-	method cantidadDeProductos() {
-		self.error("Falta implementar")
-	}
+	method cantidadDeProductos() = carrito.size()
 	
-	method totalAAbonar() {
-		self.error("Falta implementar")
-	}
+	method totalAAbonar() = carrito.sum( {producto => producto.precioAAbonar()} )
 	
-	method productoMasCaro() {
-		self.error("Falta implementar")
-	}
+	method productoMasCaro() = carrito.max( {producto => producto.precioAAbonar()} )
 	
-	method detalleDeCompra() {
-		self.error("Falta implementar")
-	}
+	method detalleDeCompra() = carrito.map( {producto => producto.detalleDeProducto()} ).asSet().sortedBy( {descripcion1, descripcion2 => descripcion1 < descripcion2} )
+
 }
 
-// TODO modelar a los productos como creas conveniente
-// y usalos desde las pruebas
+class ProductoDeVentaUnitaria {
+	var property nombreDelProducto
+	var property precioUnitario
+	
+	method precioAAbonar() = precioUnitario
+	
+	method detalleDeProducto() = nombreDelProducto.toString()
+}
 
+class ProductoDeVentaPorPeso {
+	var property nombreDelProducto
+	var property precioPorKilo
+	var property pesoEnKg
+	
+	method precioAAbonar() = precioPorKilo * pesoEnKg
+	
+	method detalleDeProducto() = nombreDelProducto.toString() + " x " + pesoEnKg.toString() + " kg"
+}
