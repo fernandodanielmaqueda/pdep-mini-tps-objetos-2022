@@ -60,38 +60,23 @@ describe "Estilos de cruza" {
 	
 	test "La cruza basada en hembra dominante de perros adultos con hembra débil no es exitosa" {
 		const hembraDebil = new Perro(esHembra = true, velocidad = 6, fuerza = 1, adulto = true)
-
-		// TODO Validar que la cruza no es exitosa con el estilo hembraDominante
-		// si se cruzan hembraDebil con machoAdulto
-		assert.fail("Falta terminar test")
+		assert.throwsExceptionWithType(new PerrosIncompatiblesException(), {hembraDominante.cruzar(hembraDebil, machoAdulto)})
 	}
 	
 	test "La cruza de dos machos no es exitosa para cualquier estilo de cruza" {
 		const perroAdultoDelMismoSexo = new Perro(esHembra = false, velocidad = 6, fuerza = 1, adulto = true)
 
-		self.paraTodoEstiloDeCruzaSeVerificaQue {estiloDeCruza =>
-			// TODO Validar que la cruza no es exitosa con cada estilo posible
-			// si se cruzan machoAdulto con perroAdultoDelMismoSexo
-			assert.fail("Falta terminar test")
-		}
+		self.paraTodoEstiloDeCruzaSeVerificaQue({estiloDeCruza => assert.throwsExceptionWithType(new PerrosIncompatiblesException(), {estiloDeCruza.cruzar(machoAdulto, perroAdultoDelMismoSexo)})})
 	}
 	test "La cruza de dos hembras no es exitosa para cualquier estilo de cruza" {
 		const perroAdultoDelMismoSexo = new Perro(esHembra = true, velocidad = 6, fuerza = 1, adulto = true)
 
-		self.paraTodoEstiloDeCruzaSeVerificaQue {estiloDeCruza =>
-			// TODO Validar que la cruza no es exitosa con cada estilo posible
-			// si se cruzan hembraAdulta con perroAdultoDelMismoSexo
-			assert.fail("Falta terminar test")
-		}
+		self.paraTodoEstiloDeCruzaSeVerificaQue({estiloDeCruza => assert.throwsExceptionWithType(new PerrosIncompatiblesException(), {estiloDeCruza.cruzar(hembraAdulta, perroAdultoDelMismoSexo)})})
 	}
 	test "La cruza de dos perros no es exitosa si alguno no es adulto para cualquier estilo de cruza" {
 		const machoJoven = new Perro(esHembra = false, velocidad = 6, fuerza = 1, adulto = false)
 
-		self.paraTodoEstiloDeCruzaSeVerificaQue {estiloDeCruza =>
-			// TODO Validar que la cruza no es exitosa con cada estilo posible
-			// si se cruzan hembraAdulta con machoJoven
-			assert.fail("Falta terminar test")
-		}
+		self.paraTodoEstiloDeCruzaSeVerificaQue({estiloDeCruza => assert.throwsExceptionWithType(new PerrosIncompatiblesException(), {estiloDeCruza.cruzar(hembraAdulta, machoJoven)})})
 	}
 	
 }

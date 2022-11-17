@@ -61,7 +61,6 @@ class Criadero {
 class IntentosDeCruzaAgotadosException inherits DomainException {}
 class NecesitaMasPerrosException inherits DomainException {}
 class PerrosIncompatiblesException inherits DomainException {}
-class Otra inherits DomainException {}
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
