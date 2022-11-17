@@ -11,8 +11,8 @@ object fabrica {
 	method crearPublicacionPrivada() = new Publicacion(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = privada)
 	method crearHistoriaPublica() = new Historia(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = publica)
 	method crearHistoriaPrivada() = new Historia(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = privada)
-	method crearPublicacionSecreta(usuariosRestringidos)  = new Publicacion(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = secreta, usuariosRestringidos = usuariosRestringidos)
-	method crearHistoriaSecreta(usuariosRestringidos) = new Historia(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = secreta, usuariosRestringidos = usuariosRestringidos)
+	method crearPublicacionSecreta(usuariosRestringidos)  = new Publicacion(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = new Secreta(usuariosRestringidos = usuariosRestringidos))
+	method crearHistoriaSecreta(usuariosRestringidos) = new Historia(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = new Secreta(usuariosRestringidos = usuariosRestringidos))
 	
 	// Otros métodos convenientes que se usan desde las pruebas
 	// No se espera que los cambies

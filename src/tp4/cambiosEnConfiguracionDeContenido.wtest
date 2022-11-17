@@ -74,8 +74,7 @@ describe "Cambios en la configuración: contenido secreto" {
 	test "Una historia pública puede cambiarse a secreta y comportarse como tal" {
 		const contenido = fabrica.crearHistoriaPublica()
 		
-		contenido.visibilidad(secreta)
-		contenido.usuariosRestringidos(usuariosRestringidos)
+		contenido.visibilidad(new Secreta(usuariosRestringidos = usuariosRestringidos))
 		
 		assert.that(validacionDeContenido.seComportaComo(contenido, fabrica.crearHistoriaSecreta(usuariosRestringidos), 
 			fabrica.usuariosDePrueba(), fabrica.diaSiguienteAPublicacion()
@@ -86,10 +85,9 @@ describe "Cambios en la configuración: contenido secreto" {
 	}
 	
 	test "Una publicación privada puede cambiarse a secreta y comportarse como tal" {
-		const contenido = fabrica.crearPublicacionPrivada()	
-			
-		contenido.visibilidad(secreta)
-		contenido.usuariosRestringidos(usuariosRestringidos)
+		const contenido = fabrica.crearPublicacionPrivada()
+		
+		contenido.visibilidad(new Secreta(usuariosRestringidos = usuariosRestringidos))
 		
 		assert.that(validacionDeContenido.seComportaComo(contenido, fabrica.crearPublicacionSecreta(usuariosRestringidos), 
 			fabrica.usuariosDePrueba(), fabrica.fechaLejanaAPublicacion()
