@@ -7,35 +7,12 @@ object fabrica {
 	
 	method fechaPublicacion() = new Date()
 	
-	/*
-	 * TODO crear y retornar el contenido correspondiente
-	 * usando self.creador() como usuario creador del contenido y 
-	 * self.fechaPublicacion() como fecha de publicación del mismo
-	 */ 
-	method crearPublicacionPublica() {
-		self.error("Falta implementar")
-		return "cambiame por el objeto que corresponda"
-	}
-	method crearPublicacionPrivada() {
-		self.error("Falta implementar")
-		return "cambiame por el objeto que corresponda"
-	}
-	method crearHistoriaPublica() {
-		self.error("Falta implementar")
-		return "cambiame por el objeto que corresponda"
-	}
-	method crearHistoriaPrivada() {
-		self.error("Falta implementar")
-		return "cambiame por el objeto que corresponda"
-	}
-	method crearPublicacionSecreta(usuariosRestringidos) {
-		self.error("Falta implementar")
-		return "cambiame por el objeto que corresponda"
-	}
-	method crearHistoriaSecreta(usuariosRestringidos) {
-		self.error("Falta implementar")
-		return "cambiame por el objeto que corresponda"
-	}
+	method crearPublicacionPublica() = new Publicacion(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = publica)
+	method crearPublicacionPrivada() = new Publicacion(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = privada)
+	method crearHistoriaPublica() = new Historia(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = publica)
+	method crearHistoriaPrivada() = new Historia(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = privada)
+	method crearPublicacionSecreta(usuariosRestringidos)  = new Publicacion(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = secreta, usuariosRestringidos = usuariosRestringidos)
+	method crearHistoriaSecreta(usuariosRestringidos) = new Historia(usuarioCreador = self.creador(), fechaDePublicacion = self.fechaPublicacion(), visibilidad = secreta, usuariosRestringidos = usuariosRestringidos)
 	
 	// Otros métodos convenientes que se usan desde las pruebas
 	// No se espera que los cambies
