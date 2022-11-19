@@ -5,11 +5,15 @@ class Publicacion {
 	const fechaDePublicacion
 	var property visibilidad
 	
-	method esVisible(usuario, fecha) = usuario == usuarioCreador || visibilidad.puedeVerla(usuario, self)
+	method esVisible(usuario, fecha) = self.esElUsuarioCreador(usuario) || self.cumpleCondicionDeVisibilidad(usuario, fecha)
+	
+	method esElUsuarioCreador(usuario) = usuario == usuarioCreador
+	
+	method cumpleCondicionDeVisibilidad(usuario, fecha) = visibilidad.puedeVerla(usuario, self)
 }
 
 class Historia inherits Publicacion {
-	override method esVisible(usuario, fecha) = usuario == usuarioCreador || (visibilidad.puedeVerla(usuario, self) && self.noHayMasDeUnDiaDeDiferencia(fecha))
+	override method cumpleCondicionDeVisibilidad(usuario, fecha) = super(usuario, fecha) && self.noHayMasDeUnDiaDeDiferencia(fecha)
 	
 	method noHayMasDeUnDiaDeDiferencia(fecha) = (fecha - fechaDePublicacion) <= 1
 }
